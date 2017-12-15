@@ -1,5 +1,8 @@
 import numpy as np
-from sklearn import cross_validation
+# Modified to be compatible with new scikit-learn release
+# from sklearn import cross_validation
+from sklearn.model_selection import train_test_split
+
 import random
 from pyfm_fast import FM_fast, CSRDataset
 
@@ -173,6 +176,8 @@ class FM:
         # use sklearn to create a validation dataset for lambda updates
         if self.verbose == True:
             print("Creating validation dataset of %.2f of training for adaptive regularization" % self.validation_size)
+        # Modified to be compatible with new scikit-learn release
+        # X_train, validation, train_labels, validation_labels = cross_validation.train_test_split(
         X_train, validation, train_labels, validation_labels = cross_validation.train_test_split(
             X, y, test_size=self.validation_size)
         self.num_attribute = X_train.shape[1]
