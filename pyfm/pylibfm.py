@@ -178,7 +178,7 @@ class FM:
             print("Creating validation dataset of %.2f of training for adaptive regularization" % self.validation_size)
         # Modified to be compatible with new scikit-learn release
         # X_train, validation, train_labels, validation_labels = cross_validation.train_test_split(
-        X_train, validation, train_labels, validation_labels = cross_validation.train_test_split(
+        X_train, validation, train_labels, validation_labels = train_test_split(
             X, y, test_size=self.validation_size)
         self.num_attribute = X_train.shape[1]
 
